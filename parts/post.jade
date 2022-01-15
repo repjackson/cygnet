@@ -1,14 +1,17 @@
 template(name='posts')
     .ui.stackable.padded.grid 
         .sixteen.wide.column
-            .ui.header 
+            .ui.inline.header 
+                +i name='blog'
                 |posts
                 if currentUser
-                    .ui.button.add_post
+                    .ui.icon.button.add_post
                         i.plus.large.icon
             .ui.centered.cards
                 each post_docs 
                     a.ui.card.zoomer.fly_right(href="/post/#{_id}")
+                        if image_id 
+                            +image_view key='image_id' direct=true
                         .content
                             .ui.header #{title}
                             |!{content}
