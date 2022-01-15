@@ -8,9 +8,9 @@ template(name='nav')
         // a.icon.item.toggle_leftbar
         //     i.large.bars.icon
         a.header.item.zoomer(href='/' class="{{isActivePath '/'}}" )
-            +i name='yin-yang'
+            +i name='swan'
             // i.large.home.icon
-            span.mobile.hidden one
+            span.mobile.hidden cygnet
         // .search.item.zoomer.mobile.hidden(title='search')
         //     .ui.icon.transparent.input
         //         if current_product_search
@@ -26,6 +26,10 @@ template(name='nav')
             // i.large.inbox.icon
             +i name='exchange'
             span.mobile.hidden transfers
+        a.icon.item(href="/posts")
+            // i.large.inbox.icon
+            +i name='blog'
+            span.mobile.hidden posts
         a.icon.item(href="/events")
             // i.large.inbox.icon
             +i name='calendar'
