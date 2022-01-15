@@ -1,4 +1,8 @@
 if Meteor.isClient
+    Router.route '/posts', (->
+        @layout 'layout'
+        @render 'posts'
+        ), name:'posts'
     Router.route '/post/:doc_id/edit', (->
         @layout 'layout'
         @render 'post_edit'
@@ -16,6 +20,14 @@ if Meteor.isClient
         Meteor.users.findOne @claimed_user_id
     Template.registerHelper 'completer', () ->
         Meteor.users.findOne @completed_by_user_id
+    
+    Template.posts.onCreated ->
+        @autorun => Meteor.subscribe 'model_docs', 'post', ->
+    Template.posts.helpers
+        post_docs: ->
+            Docs.find 
+                model:'post'
+    
     
     Template.post_view.onCreated ->
         @autorun => Meteor.subscribe 'doc_by_id', Router.current().params.doc_id, ->

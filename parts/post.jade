@@ -1,3 +1,21 @@
+template(name='posts')
+    .ui.stackable.padded.grid 
+        .sixteen.wide.column
+            .ui.header posts
+            .ui.centered.cards
+                each post_docs 
+                    a.ui.card.zoomer.fly_right(href="/post/#{_id}")
+                        .content
+                            .ui.header #{title}
+                            |!{content}
+                            .ui.label 
+                                i.user.icon
+                                |#{_author_username}
+                            i.tag.icon
+                            each tags 
+                                .ui.basic.label #{this}
+
+
 template(name='set_post_sort_key')
     .item.set_sort
         if color

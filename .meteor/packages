@@ -32,6 +32,7 @@ matb33:collection-hooks
 mquandalle:jade
 underscore@1.0.10
 coffeescript
+ecmascript
 tmeasday:publish-counts
 multiply:iron-router-progress
 mrgalaxy:stripe
