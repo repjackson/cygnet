@@ -38,7 +38,11 @@ body {
   height:15px !important;
 }
 
-.label {
+.ui.progress {
+  margin: 0px !important;
+}
+
+.ui.label {
   margin:2px !important;
 }
 
