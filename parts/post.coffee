@@ -23,6 +23,15 @@ if Meteor.isClient
     
     Template.posts.onCreated ->
         @autorun => Meteor.subscribe 'model_docs', 'post', ->
+    Template.posts.events
+        'click .add_post': ->
+            new_id = 
+                Docs.insert 
+                    model:'post'
+            Router.go "/post/#{new_id}/edit"
+            
+            
+            
     Template.posts.helpers
         post_docs: ->
             Docs.find 
