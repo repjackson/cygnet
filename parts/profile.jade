@@ -70,11 +70,12 @@ template(name='profile')
                     if is_dev
                         .ui.small.inline.header #{_id}
                             
-                .twelve.wide.column.scrollin
+                .twelve.wide.column.scrolling
                     .ui.stackable.grid
                         // .spacer
                         .sixteen.wide.column
-                            +user_posts
+                            .ui.segment
+                                +user_posts
                             +user_needs
                         .sixteen.wide.column
                             +user_dashboard
@@ -101,34 +102,62 @@ template(name='profile')
            
 template(name='user_needs')
     .ui.segment
-        .ui.header user needs
-        .ui.header love
-        +number_edit key='love_need_now' label='love priority now' direct=true
-        +number_edit key='love_need_want' label='love priority want' direct=true
-        .ui.header trust
-        +number_edit key='trust_need_now' label='trust priority now' direct=true
-        +number_edit key='trust_need_want' label='trust priority want' direct=true
-        .ui.header variety
-        +number_edit key='variety_need_now' label='variety priority now' direct=true
-        +number_edit key='variety_need_want' label='variety priority want' direct=true
-        .ui.header priority
-        +number_edit key='priority_need_now' label='priority priority now' direct=true
-        +number_edit key='priority_need_want' label='priority priority want' direct=true
-        .ui.header attraction
-        +number_edit key='attraction_need_now' label='attraction priority now' direct=true
-        +number_edit key='attraction_need_want' label='attraction priority want' direct=true
-        .ui.header emotional
-        +number_edit key='emotional_need_now' label='emotional priority now' direct=true
-        +number_edit key='emotional_need_want' label='emotional priority want' direct=true
-        .ui.header physical
-        +number_edit key='physical_need_now' label='physical priority now' direct=true
-        +number_edit key='physical_need_want' label='physical priority want' direct=true
-        .ui.header sexual
-        +number_edit key='sexual_need_now' label='sexual priority now' direct=true
-        +number_edit key='sexual_need_want' label='sexual priority want' direct=true
-        .ui.header contribution
-        +number_edit key='contribution_need_now' label='contribution priority now' direct=true
-        +number_edit key='contribution_need_want' label='contribution priority want' direct=true
+        .ui.header 
+            |user needs and priorities
+        div
+        .ui.inline.header 
+            +i name='heart'
+            |love
+        +number_edit key='love_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='love_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='trust'
+            |trust
+        +number_edit key='trust_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='trust_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='how-many-quest'
+            |variety
+        +number_edit key='variety_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='variety_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='multicast'
+            |priority
+        +number_edit key='priority_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='priority_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='magnet'
+            |attraction
+        +number_edit key='attraction_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='attraction_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='brain'
+            |emotional
+        +number_edit key='emotional_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='emotional_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='friends--v1'
+            |physical
+        +number_edit key='physical_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='physical_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header
+            +i name='reproduction'
+            |sexual
+        +number_edit key='sexual_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='sexual_need_want' label='want' direct=true min=0 max=10
+        div
+        .ui.inline.header 
+            +i name='donate'
+            |contribution
+        +number_edit key='contribution_need_now' label='now' direct=true min=0 max=10
+        +number_edit key='contribution_need_want' label='want' direct=true min=0 max=10
            
 template(name='user_received')  
     .ui.inline.header 
