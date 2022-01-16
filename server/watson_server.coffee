@@ -56,11 +56,11 @@ Meteor.methods
                     sentiment: true
                     # limit: 2
                 concepts: {}
-                categories: {}
+                # categories: {}
                 emotion: {}
                 metadata: {}
-                relations: {}
-                semantic_roles: {}
+                # relations: {}
+                # semantic_roles: {}
                 sentiment: {}
 
         switch mode
@@ -93,12 +93,12 @@ Meteor.methods
                 # if Meteor.isDevelopment
                 #     console.log 'categories',response.categories
                 adding_tags = []
-                if response.categories
-                    for category in response.categories
-                        console.log category.label.split('/')[1..]
-                        console.log category.label.split('/')
-                        for tag in category.label.split('/')
-                            if tag.length > 0 then adding_tags.push tag
+                # if response.categories
+                #     for category in response.categories
+                #         console.log category.label.split('/')[1..]
+                #         console.log category.label.split('/')
+                #         for tag in category.label.split('/')
+                #             if tag.length > 0 then adding_tags.push tag
                 Docs.update { _id: doc_id },
                     $addToSet:
                         tags:$each:adding_tags
