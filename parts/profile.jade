@@ -75,6 +75,7 @@ template(name='profile')
                         // .spacer
                         .sixteen.wide.column
                             +user_posts
+                            +user_needs
                         .sixteen.wide.column
                             +user_dashboard
                         .eight.wide.column
@@ -96,6 +97,19 @@ template(name='profile')
                         .eight.wide.column
                             +user_tribes
                                
+           
+           
+template(name='user_needs')
+    .ui.header love
+    +number_edit key='love_need' direct=true
+    .ui.header trust
+    .ui.header variety
+    .ui.header priority
+    .ui.header attraction
+    .ui.header emotional
+    .ui.header physical
+    .ui.header sexual
+    .ui.header contribution
            
 template(name='user_received')  
     .ui.inline.header 
