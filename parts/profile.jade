@@ -71,6 +71,60 @@ template(name='profile')
                         .ui.small.inline.header #{_id}
                             
                 .twelve.wide.column.scrolling
+                    a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/" class="{{isActiveRoute 'user_dashboard'}}" title="#{user.username} dashboard")
+                        // i.large.dashboard.icon
+                        +i name='dashboard'
+                        span dashboard
+                    if currentUser
+                        a.ui.large.button.select_term.no_blink(href="/user/#{username}/posts" class="{{isActiveRoute 'user_posts'}}" title="#{user.username} posts")
+                            // i.newspaper.large.icon
+                            +i name='blog'
+                            |#{user_post_count}
+                            span posts
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/comments" class="{{isActiveRoute 'user_comments'}}" title="#{user.username} comments")
+                            // i.chat.large.icon
+                            +i name='chat'
+                            |#{user_comment_count}
+                            span comments
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/credits" class="{{isActiveRoute 'user_credits'}}" title="#{user.username} credits")
+                            // i.large.chevron.down.icon
+                            +i name='donate'
+                            span pts received
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/sent" class="{{isActiveRoute 'user_sent'}}" title="#{user.username} sent")
+                            // i.large.gift.icon
+                            +i name='gift'
+                            span pts sent
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/received" class="{{isActiveRoute 'user_received'}}" title="#{user.username} received")
+                            // i.large.dollar.icon
+                            +i name='money'
+                            span credit
+                        a.ui.disabled.icon.large.button.select_term.no_blink(href="/user/#{username}/upvoted" class="{{isActiveRoute 'user_upvoted'}}" title="#{user.username} upvoted")
+                            // i.large.chevron.up.icon
+                            +i name='chevron-up'
+                            span upvoted
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/downvoted" class="{{isActiveRoute 'user_downvoted'}}" title="#{user.username} downvoted")
+                            // i.large.chevron.down.icon
+                            +i name='chevron-down'
+                            span downvoted
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/tips" class="{{isActiveRoute 'user_tips'}}" title="#{user.username} tips")
+                            // i.donate.large.icon
+                            +i name='donate'
+                            span tips
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/groups" class="{{isActiveRoute 'user_groups'}}" title="#{user.username} groups")
+                            // i.users.large.icon
+                            +i name='campfire'
+                            span tribes
+                        a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/bounties" class="{{isActiveRoute 'user_bounties'}}" title="#{user.username} bounties")
+                            i.hand.holding.large.icon
+                            span bounties
+                        if is_current_user
+                            a.ui.icon.large.button.select_term.no_blink(href="/user/#{username}/friends" class="{{isActiveRoute 'user_friends'}}" title="#{user.username} friends")
+                                i.users.large.icon
+                                span friends
+                            a.ui.large.icon.button.select_term.no_blink(href="/user/#{username}/vault" class="{{isActiveRoute 'user_vault'}}" title="#{user.username} friends")
+                                i.lock.large.icon
+                                span vault
+                
                     .ui.stackable.grid
                         // .spacer
                         .sixteen.wide.column
