@@ -549,7 +549,8 @@ template(name='user_dashboard')
                         +user_debit_segment
             .column
                 .ui.inline.spaced.header
-                    i.concierge.bell.icon
+                    +i name='service-bell'
+                    // i.concierge.bell.icon
                     |requests
                 .ui.small.header (#{total_fulfilled_amount}p total fulfilled)
                 .ui.small.header (#{fulfilled_count}p total fulfilled count)
@@ -565,23 +566,23 @@ template(name='user_dashboard')
                                 |status: #{status}
                                 if complete 
                                     |completed by #{completer.name}
-            .column
-                .ui.inline.spaced.header
-                    i.calendar.icon
-                    |events
-                .medscroll
-                    each user_event_tickets
-                        .ui.card
-                            if ticket_event.image_id
-                                a(href="/event/#{event_id}")
-                                    img.ui.fluid.zoom.image(src="{{c.url ticket_event.image_id height=200 width=200 crop='fit'}}" class=currentUser.invert_class)
-                            .content.zoom.pointer
-                                a.header(href="/event/#{event_id}")
-                                    |#{ticket_event.title}
-                                |#{fac.shortname}
-                                |#{description}
-                                |{{med_date date}}
-                                |{{long_time time}}
+            // .column
+            //     .ui.inline.spaced.header
+            //         i.calendar.icon
+            //         |events
+            //     .medscroll
+            //         each user_event_tickets
+            //             .ui.card
+            //                 if ticket_event.image_id
+            //                     a(href="/event/#{event_id}")
+            //                         img.ui.fluid.zoom.image(src="{{c.url ticket_event.image_id height=200 width=200 crop='fit'}}" class=currentUser.invert_class)
+            //                 .content.zoom.pointer
+            //                     a.header(href="/event/#{event_id}")
+            //                         |#{ticket_event.title}
+            //                     |#{fac.shortname}
+            //                     |#{description}
+            //                     |{{med_date date}}
+            //                     |{{long_time time}}
 
 
 

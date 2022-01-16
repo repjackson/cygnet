@@ -39,7 +39,7 @@ template(name='user_edit')
                     +array_edit key='allergens' label='allergens' icon='no-milk' direct=true
                     +array_edit key='food_dislikes' label='food dislikes' icon='disgusting' direct=true
                     +link_edit key='profile_link' label='profile link' icon='link' direct=true
-                    if currentUser.admin
+                    if in_dev
                         .ui.header
                             i.shield.icon
                             |admin
@@ -310,7 +310,7 @@ template(name='user_edit_genekeys')
                             +image_edit key='gene2' label='gene keys 2' icon='dna' direct=true
                         .column
                             +image_edit key='gene3' label='gene keys 3' icon='dna' direct=true
-                +html_edit key='genekeys_report' label='report' direct=true
+                // +html_edit key='genekeys_report' label='report' direct=true
                 
                 
 template(name='user_edit_badges')

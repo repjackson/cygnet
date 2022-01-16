@@ -254,12 +254,15 @@ Template.image_edit.events
     'click #remove_photo': ->
         parent = Template.parentData()
 
-        if confirm 'Remove Photo?'
+        if confirm 'remove photo?'
             # Docs.update parent._id,
             #     $unset:"#{@key}":1
             doc = Docs.findOne parent._id
             if doc
                 Docs.update parent._id,
+                    $unset:"#{@key}":1
+            else 
+                Meteor.users.update parent._id,
                     $unset:"#{@key}":1
             $('body').toast(
                 showIcon: 'checkmark'
