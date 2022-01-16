@@ -1,5 +1,5 @@
 if Meteor.isClient
-    @picked_task_tags = new ReactiveArray []
+    @picked_tags = new ReactiveArray []
     
     Router.route '/task/:doc_id', (->
         @layout 'layout'
@@ -12,11 +12,11 @@ if Meteor.isClient
     
     Template.tasks.onCreated ->
         @autorun => @subscribe 'task_docs',
-            picked_task_tags.array()
+            picked_tags.array()
             Session.get('task_title_filter')
 
         @autorun => @subscribe 'task_facets',
-            picked_task_tags.array()
+            picked_tags.array()
             Session.get('task_title_filter')
 
     Template.tasks.events
@@ -24,13 +24,13 @@ if Meteor.isClient
             new_id = Docs.insert 
                 model:'task'
             Router.go "/task/#{new_id}/edit"    
-        'click .pick_task_tag': -> picked_task_tags.push @title
-        'click .unpick_task_tag': -> picked_task_tags.remove @valueOf()
+        'click .pick_task_tag': -> picked_tags.push @title
+        'click .unpick_task_tag': -> picked_tags.remove @valueOf()
 
                 
             
     Template.tasks.helpers
-        picked_task_tags: -> picked_task_tags.array()
+        picked_tags: -> picked_tags.array()
     
         task_docs: ->
             Docs.find 

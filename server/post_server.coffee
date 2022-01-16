@@ -1,5 +1,5 @@
-Meteor.publish 'task_facets', (
-    picked_tags=[]
+Meteor.publish 'post_facets', (
+    picked_post_tags=[]
     title_filter
     picked_authors=[]
     picked_tasks=[]
@@ -13,9 +13,9 @@ Meteor.publish 'task_facets', (
     self = @
     match = {}
     # match = {app:'pes'}
+    match.model = 'post'
     # match.group_id = Meteor.user().current_group_id
     
-    match.model = 'task'
     if title_filter and title_filter.length > 1
         match.title = {$regex:title_filter, $options:'i'}
     
@@ -26,7 +26,7 @@ Meteor.publish 'task_facets', (
     # if view_local
     #     match.local = true
     if picked_authors.length > 0 then match._author_username = $in:picked_authors
-    if picked_tags.length > 0 then match.tags = $all:picked_tags 
+    if picked_post_tags.length > 0 then match.tags = $all:picked_post_tags 
     if picked_locations.length > 0 then match.location_title = $in:picked_locations 
     if picked_timestamp_tags.length > 0 then match._timestamp_tags = $in:picked_timestamp_tags 
     # match.$regex:"#{product_query}", $options: 'i'}
@@ -59,7 +59,7 @@ Meteor.publish 'task_facets', (
         { $project: "tags": 1 }
         { $unwind: "$tags" }
         { $group: _id: "$tags", count: $sum: 1 }
-        { $match: _id: $nin: picked_tags }
+        { $match: _id: $nin: picked_post_tags }
         # { $match: _id: {$regex:"#{product_query}", $options: 'i'} }
         { $sort: count: -1, _id: 1 }
         { $limit: 20 }
@@ -74,7 +74,7 @@ Meteor.publish 'task_facets', (
         self.added 'results', Random.id(),
             title: tag.title
             count: tag.count
-            model:'task_tag'
+            model:'post_tag'
             # category:key
             # index: i
 
@@ -128,8 +128,8 @@ Meteor.publish 'task_facets', (
 
     self.ready()
     
-Meteor.publish 'task_docs', (
-    picked_tags
+Meteor.publish 'post_docs', (
+    picked_post_tags
     title_filter
     picked_authors=[]
     picked_tasks=[]
@@ -146,9 +146,8 @@ Meteor.publish 'task_docs', (
     self = @
     match = {}
     # match = {app:'pes'}
-    match.model = 'task'
+    match.model = 'post'
     # match.group_id = Meteor.user().current_group_id
-    
     if title_filter and title_filter.length > 1
         match.title = {$regex:title_filter, $options:'i'}
     
@@ -159,7 +158,7 @@ Meteor.publish 'task_docs', (
     # if view_local
     #     match.local = true
     if picked_authors.length > 0 then match._author_username = $in:picked_authors
-    if picked_tags.length > 0 then match.tags = $all:picked_tags 
+    if picked_post_tags.length > 0 then match.tags = $all:picked_post_tags 
     if picked_locations.length > 0 then match.location_title = $in:picked_locations 
     if picked_timestamp_tags.length > 0 then match._timestamp_tags = $in:picked_timestamp_tags 
     console.log match
