@@ -385,14 +385,16 @@ Template.text_edit.events
 
 Template.number_edit.events
     'blur .edit_number': (e,t)->
-        # console.log @
+        console.log @
         parent = Template.parentData()
         val = parseInt t.$('.edit_number').val()
         doc = Docs.findOne parent._id
         if doc
             Docs.update parent._id,
                 $set:"#{@key}":val
-
+        else 
+            Meteor.users.update parent._id,
+                $set:"#{@key}":val
 # Template.float_edit.events
 #     'blur .edit_float': (e,t)->
 #         parent = Template.parentData()

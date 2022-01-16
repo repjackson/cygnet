@@ -100,16 +100,35 @@ template(name='profile')
            
            
 template(name='user_needs')
-    .ui.header love
-    +number_edit key='love_need' direct=true
-    .ui.header trust
-    .ui.header variety
-    .ui.header priority
-    .ui.header attraction
-    .ui.header emotional
-    .ui.header physical
-    .ui.header sexual
-    .ui.header contribution
+    .ui.segment
+        .ui.header user needs
+        .ui.header love
+        +number_edit key='love_need_now' label='love priority now' direct=true
+        +number_edit key='love_need_want' label='love priority want' direct=true
+        .ui.header trust
+        +number_edit key='trust_need_now' label='trust priority now' direct=true
+        +number_edit key='trust_need_want' label='trust priority want' direct=true
+        .ui.header variety
+        +number_edit key='variety_need_now' label='variety priority now' direct=true
+        +number_edit key='variety_need_want' label='variety priority want' direct=true
+        .ui.header priority
+        +number_edit key='priority_need_now' label='priority priority now' direct=true
+        +number_edit key='priority_need_want' label='priority priority want' direct=true
+        .ui.header attraction
+        +number_edit key='attraction_need_now' label='attraction priority now' direct=true
+        +number_edit key='attraction_need_want' label='attraction priority want' direct=true
+        .ui.header emotional
+        +number_edit key='emotional_need_now' label='emotional priority now' direct=true
+        +number_edit key='emotional_need_want' label='emotional priority want' direct=true
+        .ui.header physical
+        +number_edit key='physical_need_now' label='physical priority now' direct=true
+        +number_edit key='physical_need_want' label='physical priority want' direct=true
+        .ui.header sexual
+        +number_edit key='sexual_need_now' label='sexual priority now' direct=true
+        +number_edit key='sexual_need_want' label='sexual priority want' direct=true
+        .ui.header contribution
+        +number_edit key='contribution_need_now' label='contribution priority now' direct=true
+        +number_edit key='contribution_need_want' label='contribution priority want' direct=true
            
 template(name='user_received')  
     .ui.inline.header 
