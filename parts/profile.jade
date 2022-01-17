@@ -1,4 +1,4 @@
-template(name='profile')
+template(name='user_layout')
     with current_user
         .ui.stackable.padded.grid
             .row
@@ -128,30 +128,30 @@ template(name='profile')
                     .ui.stackable.grid
                         // .spacer
                         .sixteen.wide.column
-                            .ui.segment
-                                +user_posts
-                            +user_needs
-                        .sixteen.wide.column
-                            +user_dashboard
-                        .eight.wide.column
-                            +user_credit
-                        .eight.wide.column
-                            +user_friends
-                        .eight.wide.column
-                            +user_received
-                        .eight.wide.column
-                            +user_sent
-                        .eight.wide.column
-                            +user_genekeys
-                        .eight.wide.column
-                            +user_info
-                        .eight.wide.column
-                            +user_events
-                        .eight.wide.column
-                            +user_badges
-                        .eight.wide.column
-                            +user_tribes
-                               
+                            +yield 
+                            // .ui.segment
+                            //     +user_posts
+                            // +user_needs
+                        // .sixteen.wide.column
+                        //     +user_dashboard
+                        // .eight.wide.column
+                        //     +user_credit
+                        // .eight.wide.column
+                        //     +user_friends
+                        // .eight.wide.column
+                        //     +user_received
+                        // .eight.wide.column
+                        //     +user_sent
+                        // .eight.wide.column
+                        //     +user_genekeys
+                        // .eight.wide.column
+                        //     +user_info
+                        // .eight.wide.column
+                        //     +user_events
+                        // .eight.wide.column
+                        //     +user_badges
+                        // .eight.wide.column
+                        //     +user_tribes
            
            
 template(name='user_needs')

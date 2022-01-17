@@ -45,43 +45,25 @@ template(name='user_posts')
     if is_current_user
         .ui.basic.icon.button.add_post
             i.large.plus.icon
-    .ui.padded.stackable.two.column.grid
+    .ui.padded.stackable.one.column.grid
         .column
             .ui.header 
                 +i name='sent--v2'
                 |authored 
             .ui.stackable.cards.scrolling
-                each sent_posts 
+                each post_docs 
                     .ui.card
                         .content
                             a(href="/post/#{_id}") 
                                 img.ui.image(src="{{c.url image_id width=400 height=300 crop='pad'}}")
     
-                            .ui.header 
-                                |#{amount} #{recipient_username}
+                            .smallscroll 
+                                |!{content}
                             // |created #{when}
-                            |sent {{from_now sent_timestamp}}
-                            small {{cal_time sent_timestamp}}
+                            small {{when}}
                             a.ui.icon.button(href='/post/#{_id}')
                                 i.large.chevron.right.icon
                             
-        .column
-            .ui.header 
-                +i name='gift--v1'
-                |bookmarks
-            .ui.stackable.cards.scrolling
-                each favorited
-                    .ui.card
-                        .content
-                            a(href="/post/#{_id}") 
-                                img.ui.image(src="{{c.url image_id width=400 height=300 crop='pad'}}")
-                            .ui.header 
-                                |#{amount} #{_author_username}
-                            |received {{from_now sent_timestamp}}
-                            small {{cal_time sent_timestamp}}
-                            a.ui.icon.button(href='/post/#{_id}')
-                            i.ui.large.link.chevron.right.icon.edit_address
-                
         
         
 
@@ -111,7 +93,7 @@ template(name='post_card')
         
 template(name='post_item')
     .ui.fluid.segment.view_post.pointer
-        a.ui.header(href="/post/#{_id}/view") #{title}
+        a.ui.header(href="/post/#{_id}") #{title}
         div
         .ui.small.grey.inline.header #{when}
         | #{content}
@@ -149,6 +131,7 @@ template(name='post_view')
                         .ui.label #{username
                     +array_view key='tags' label='tags' direct=true
                     +voting_full
+                    .ui.header #{when}
                     //- +array_view key='location_tags' label='location_tags' direct=true
                     +comments
                 .twelve.wide.column.scrolling
@@ -175,7 +158,7 @@ template(name='post_edit')
                     .ui.inline.header 
                         +icolor name='news' cl='ui image inline pointer'
                         |edit post
-                    a.ui.icon.green.big.button(href="/post/#{_id}/view" title='save')
+                    a.ui.icon.green.big.button(href="/post/#{_id}" title='save')
                         i.checkmark.big.icon
                     +text_edit key='title' label='title' direct=true
                     +html_edit key='content' label='content' direct=true

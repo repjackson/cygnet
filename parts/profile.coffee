@@ -1,37 +1,49 @@
 if Meteor.isClient
     Router.route '/user/:username', (->
-        @layout 'layout'
-        @render 'profile'
-        ), name:'profile'
+        @layout 'user_layout'
+        @render 'user_dashboard'
+        ), name:'user_dashboard'
     Router.route '/user/:username/cart', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'cart'
         ), name:'user_cart'
     Router.route '/user/:username/credit', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'user_credit'
         ), name:'user_credit'
     Router.route '/user/:username/orders', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'user_orders'
         ), name:'user_orders'
     Router.route '/user/:username/friends', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'user_friends'
         ), name:'user_friends'
     Router.route '/user/:username/subscriptions', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'user_subs'
         ), name:'user_subscriptions'
     Router.route '/user/:username/posts', (->
-        @layout 'layout'
+        @layout 'user_layout'
         @render 'user_posts'
         ), name:'user_posts'
+    Router.route '/user/:username/comments', (->
+        @layout 'user_layout'
+        @render 'user_comments'
+        ), name:'user_comments'
+    Router.route '/user/:username/comments', (->
+        @layout 'user_layout'
+        @render 'user_comments'
+        ), name:'user_comments'
+    Router.route '/user/:username/tribes', (->
+        @layout 'user_layout'
+        @render 'user_tribes'
+        ), name:'user_tribes'
 
 
 
 
-    Template.profile.onCreated ->
+    Template.user_layout.onCreated ->
         @autorun -> Meteor.subscribe 'user_from_username', Router.current().params.username, ->
         # @autorun -> Meteor.subscribe 'user_referenced_docs', Router.current().params.username, ->
 if Meteor.isServer 
@@ -41,7 +53,7 @@ if Meteor.isServer
 
 
 if Meteor.isClient 
-    Template.profile.onRendered ->
+    Template.user_layout.onRendered ->
         Meteor.setTimeout ->
             $('.button').popup()
         , 2000
@@ -51,14 +63,14 @@ if Meteor.isClient
     #     user_section_template: ->
     #         "user_#{Router.current().params.group}"
 
-    Template.profile.helpers
+    Template.user_layout.helpers
         current_user: ->
             Meteor.users.findOne username:Router.current().params.username
 
         user: ->
             Meteor.users.findOne username:Router.current().params.username
 
-    Template.profile.events
+    Template.user_layout.events
         'click .logout_other_clients': ->
             Meteor.logoutOtherClients()
 

@@ -39,6 +39,14 @@ if Meteor.isClient
                 private:$ne:true
             }, sort:_timestamp:-1    
     
+    Template.user_posts.onCreated ->
+        @autorun => Meteor.subscribe 'user_posts', Router.current().params.username, ->
+    Template.user_posts.helpers
+        post_docs: ->
+            Docs.find {
+                model:'post'
+            }, sort:_timestamp:-1    
+    
     Template.post_view.onCreated ->
         @autorun => Meteor.subscribe 'doc_by_id', Router.current().params.doc_id, ->
     Template.post_edit.onCreated ->
@@ -156,6 +164,13 @@ if Meteor.isClient
             )
             
 if Meteor.isServer
+    Meteor.publish 'user_posts', (username)->
+        user = Meteor.users.findOne username:username
+        
+        Docs.find 
+            model:'post'
+            _author_id:user._id
+    
     Meteor.publish 'post_results', (
         )->
         # console.log picked_ingredients
