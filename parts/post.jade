@@ -7,20 +7,22 @@ template(name='posts')
                 // if currentUser
                 .ui.icon.button.add_post
                     i.plus.large.icon
-            .ui.centered.cards
+            .ui.centered.two.stackable.cards
                 each post_docs 
-                    a.ui.card.zoomer.fly_right(href="/post/#{_id}")
+                    a.ui.card.fly_right(href="/post/#{_id}")
                         if image_id 
                             +image_view key='image_id' direct=true
                         .content
                             .ui.header #{title}
-                            |!{content}
+                            .smallscroll
+                                |!{content}
                             .ui.label 
                                 i.user.icon
                                 |#{_author_username}
                             i.tag.icon
                             each tags 
                                 .ui.basic.label #{this}
+                            |#{when}
 
 
 template(name='set_post_sort_key')

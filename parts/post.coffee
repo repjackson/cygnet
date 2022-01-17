@@ -34,9 +34,10 @@ if Meteor.isClient
             
     Template.posts.helpers
         post_docs: ->
-            Docs.find 
+            Docs.find {
                 model:'post'
-    
+                private:$ne:true
+            }, sort:_timestamp:-1    
     
     Template.post_view.onCreated ->
         @autorun => Meteor.subscribe 'doc_by_id', Router.current().params.doc_id, ->
@@ -202,7 +203,8 @@ if Meteor.isServer
         # console.log 'sort direction', sort_direction
         Docs.find match,
             # sort:"#{sort_key}":sort_direction
-            # sort:_timestamp:-1
+            sort:_timestamp:-1
+            private:$ne:true
             limit: 42
             
             
