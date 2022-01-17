@@ -8,34 +8,27 @@ template(name='user_layout')
                         i.chevron.left.icon
                         +i name='groups'
                         // |users
-                    a.item(href="/user/#{current_user.username}")
+                    a.item(href="/user/#{username}")
                         img.ui.circular.centered.image(src="{{c.url image_id height=400 width=400 gravity='face' crop='fill'}}")
                     // .spacer
                     // a(href="/user/#{username}")
                     .ui.center.aligned.header
                         // strong #{name}
-                        // strong #{user.first_name} #{user.last_name}
-                        | @#{user.username}        
-                    .ui.two.column.middle.aligned.grid
-                        // .column
-                        //     img.ui.small.inline.image.mobile.only(src="{{c.url image_id height=300 width=300 gravity='face' crop='fill'}}")
-                        .column
-                            .ui.inline.header
-                                strong #{user.name}
-                                //- small @#{user.username}        
-                            a.ui.inline.header(href="/user/#{current_user.username}/credit" title='credit')
-                                +i name='coins'
-                                |#{user.points}p
+                        strong #{first_name} #{last_name}
+                        | @#{username}        
+                    a.ui.inline.header(href="/user/#{username}/credit" title='credit')
+                        +i name='coins'
+                        |#{user.points}p
                     if is_current_user
-                        a.ui.circular.button(href="/user/#{current_user.username}/edit" title='profile settings')
+                        a.ui.circular.button(href="/user/#{username}/edit" title='profile settings')
                             i.cog.icon
                             |edit profile
                     else if is_admin
-                        a.ui.circular.button(href="/user/#{current_user.username}/edit" title='profile settings')
+                        a.ui.circular.button(href="/user/#{username}/edit" title='profile settings')
                             +i name='settings' cl='ui avatar image'
                             |edit profile
-                    // unless is_current_user
-                    //     +friend_button
+                    unless is_current_user
+                        +friend_button
                     if is_current_user
                         .ui.button.logout
                             i.sign.out.alternate.icon
