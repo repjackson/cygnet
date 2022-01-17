@@ -2,7 +2,7 @@ if Meteor.isClient
     Router.route '/user/:username', (->
         @layout 'user_layout'
         @render 'user_dashboard'
-        ), name:'user_dashboard'
+        ), name:'profile'
     Router.route '/user/:username/cart', (->
         @layout 'user_layout'
         @render 'cart'
@@ -27,19 +27,14 @@ if Meteor.isClient
         @layout 'user_layout'
         @render 'user_posts'
         ), name:'user_posts'
+    Router.route '/user/:username/products', (->
+        @layout 'user_layout'
+        @render 'user_products'
+        ), name:'user_products'
     Router.route '/user/:username/comments', (->
         @layout 'user_layout'
         @render 'user_comments'
         ), name:'user_comments'
-    Router.route '/user/:username/comments', (->
-        @layout 'user_layout'
-        @render 'user_comments'
-        ), name:'user_comments'
-    Router.route '/user/:username/tribes', (->
-        @layout 'user_layout'
-        @render 'user_tribes'
-        ), name:'user_tribes'
-
 
 
 
