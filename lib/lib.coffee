@@ -1,7 +1,5 @@
 @Docs = new Meteor.Collection 'docs'
 @Results = new Meteor.Collection 'results'
-@Tags = new Meteor.Collection 'tags'
-@Terms = new Meteor.Collection 'terms'
 
 Meteor.users.helpers
     name: ->
@@ -303,5 +301,5 @@ Router.route '*', -> @render 'transfers'
 
 # Router.route '/login', -> @render 'login'
 
-Router.route '/', -> @render 'transfers'
+Router.route '/', -> @render 'posts'
 # Router.route '/', -> @redirect "/user/#{Meteor.user().username}"
